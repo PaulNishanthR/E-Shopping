@@ -94,14 +94,14 @@ window.addEventListener("load", () => {
   if (!localStorage.getItem("users")) {
     localStorage.setItem("users", JSON.stringify(StartingUsers));
   }
-  if (location.pathname === "/pages/index.html") {
+  if (location.pathname === "userindex.html") {
     loadCustomerProducts();
   }
-  if (location.pathname === "/pages/admin/index.html") {
+  if (location.pathname === "index.html") {
     loadadminPage();
     console.log(location.pathname);
   }
-  if (location.pathname === "/pages/admin/add_product.html") {
+  if (location.pathname === "add_product.html") {
     let newurl = new URL(document.location).searchParams;
     let productid = newurl.get("id");
     console.log(productid);
@@ -115,18 +115,18 @@ window.addEventListener("load", () => {
     }
   }
 
-  if (location.pathname === "/pages/cart.html") {
+  if (location.pathname === "cart.html") {
     loadCartPage();
   }
 
   if (
-    location.pathname === "/pages/cart.html" ||
-    location.pathname === "/pages/orders.html" ||
-    location.pathname === "/pages/index.html"
+    location.pathname === "cart.html" ||
+    location.pathname === "userorders.html" ||
+    location.pathname === "userindex.html"
   ) {
     updatecartcount();
   }
-  if (location.pathname === "/pages/order.html") {
+  if (location.pathname === "userorder.html") {
     loadorderpage();
   }
 });
@@ -186,8 +186,8 @@ const userLogin = () => {
   sessionStorage.setItem("users", loginuser.id);
   errorRef.innerText = "";
   if (loginuser.email === "admin@admin.com")
-    location.replace("/pages/admin/index.html");
-  else location.replace("/pages/index.html");
+    location.replace("index.html");
+  else location.replace("userindex.html");
 };
 const validateEmail = (email) => {
   let regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -195,7 +195,7 @@ const validateEmail = (email) => {
 };
 
 const userLogOut = () => {
-  location.replace("/pages/login.html");
+  location.replace("/login.html");
 };
 
 const getRandomNumber = (max = 1000) => {
@@ -255,7 +255,7 @@ const register = () => {
         password: passwordRef.value,
       });
       localStorage.setItem("users", JSON.stringify(users));
-      location.replace("/pages/login.html");
+      location.replace("login.html");
     } else {
       errorRef.innerText = "password doesn't match";
     }
@@ -362,7 +362,7 @@ const UpdateProducts = () => {
     }, 2000);
 
     // Redirect to another page
-    location.href = "/pages/admin/index.html";
+    location.href = "index.html";
   } catch (error) {
     console.error("An error occurred:", error);
     // Handle the error or display an error message as needed
@@ -424,7 +424,7 @@ const deleteProduct = (id) => {
 };
 
 const editProduct = (id) => {
-  location.href = `/pages/admin/add_product.html?id=${id}`;
+  location.href = `add_product.html?id=${id}`;
 };
 
 const populateproduct = (product) => {
@@ -501,7 +501,7 @@ const addToCart = (id) => {
   const product = products.find((product) => product.id === parseInt(id));
 
   if (!sessionStorage.getItem("users")) {
-    location.href = "/pages/login.html";
+    location.href = "login.html";
   } else {
     let users = parseInt(sessionStorage.getItem("users"));
     let cart = [];
@@ -558,7 +558,7 @@ const loadCartPage = () => {
     carttableRef.innerHTML = body;
     totalRef.innerText = `Total - ₹ ${total}`;
   } else {
-    location.href = "/pages/login.html";
+    location.href = "login.html";
   }
   // console.log(cart);
 };
@@ -579,7 +579,7 @@ const updatecartcount = () => {
         cartCountRef.innerText = `Cart - ${cartCount}`;
       } else cartCountRef.innerText = `Cart`;
     }
-  } else location.href = "/pages/login.html";
+  } else location.href = "login.html";
 };
 
 const checkOutHandler = () => {
@@ -604,9 +604,9 @@ const checkOutHandler = () => {
       localStorage.setItem("cart", JSON.stringify(otherUserCart));
       localStorage.setItem("orders", JSON.stringify(orders));
       updatecartcount();
-      location.href = "/pages/index.html";
+      location.href = "userindex.html";
     } else {
-      location.href = "/pages/index.html";
+      location.href = "userindex.html";
     }
   } else {
     location.href = "login.html";

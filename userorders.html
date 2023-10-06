@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cart</title>
+    <title>Orders</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -20,7 +20,7 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">Shopping store</a>
+        <a class="navbar-brand" href="userindex.html">Shopping store</a>
       </div>
       <div
         class="collapse navbar-collapse secondary"
@@ -36,9 +36,9 @@
         </button>
         <button
           type="button"
-          onclick="location.href='orders.html';"
+          onclick="location.href='userorders.html';"
           class="btn btn-primary m-2"
-          id="cartCount"
+          
         >
           Orders
         </button>
@@ -47,36 +47,49 @@
         </button>
       </div>
     </nav>
-    <div
-      class="container my-5 background-color: rgb(68, 205, 223) border=5px solid black"
-    >
-      <div id="emptyCart">
-        <!-- <p class="fs-2">You don't have any products</p> -->
-      </div>
-      <div id="table">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">title</th>
-              <th scope="col">count</th>
-              <th scope="col">Price</th>
-              <!-- <th scope="col">Total Amount</th> -->
-            </tr>
-          </thead>
-          <tbody id="cartTableBody"></tbody>
-        </table>
-        <p class="fs-5 text" id="total">Total-₹</p>
-        <div class="d-flex justify-content">
-          <a href="cart.html">
-            <button
-              class="btn btn-warning border:3px solid black" href="/pages/index.html"
-              onclick="Gotoproducts()"
-            >
-              Go to products
-            </button></a
-          >
-        </div>
-      </div>
+    <div class="container my-5">
+      <p class="fs-1">Orders</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">title</th>
+            <th scope="col">count</th>
+            <th scope="col">Price</th>
+            <th scope="col">status</th>
+          </tr>
+        </thead>
+        <tbody id="ordertable">
+          <!-- <tr>
+            <th scope="row">1</th>
+            <td>HP Laptop</td>
+            <td>1</td>
+            <td>₹ 999</td>
+            <td>Pending</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Asus Laptop</td>
+            <td>1</td>
+            <td>₹ 999</td>
+            <td>Pending</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Lenovo laptop</td>
+            <td>1</td>
+            <td>₹ 1099</td>
+            <td>Pending</td>
+          </tr> -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <th id="total" colspan="4">Total :</th>
+            <td>200</td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
   </body>
 </html>
